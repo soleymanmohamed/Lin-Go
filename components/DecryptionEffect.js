@@ -27,8 +27,8 @@ export default function DecryptionEffect() {
           clearInterval(interval);
         }
 
-        iteration += 1 / 6; // Slower increment for a slower animation
-      }, 100); // Adjust the interval timing for a slower effect
+        iteration += 1 / 4; // Slower increment for an even slower animation
+      }, 100); // Increase the interval timing for a slower effect
     };
 
     text.dataset.value = text.innerText;

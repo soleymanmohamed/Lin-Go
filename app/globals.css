@@ -4,47 +4,48 @@
 
 /* Custom global styles */
 body {
-  @apply bg-black text-green-400 min-h-screen flex flex-col items-center justify-center;
+  @apply bg-gradient-to-r from-gray-900 to-gray-800 text-green-300 min-h-screen flex flex-col items-center justify-center;
   font-family: 'Courier New', Courier, monospace;
 }
 
 header, footer {
-  @apply w-full py-4 text-center border-green-400;
+  @apply w-full py-6 text-center border-b border-green-400;
 }
 
 header h1 {
-  @apply text-4xl font-bold;
+  @apply text-5xl font-bold text-green-500 animate-pulse;
 }
 
 footer p {
-  @apply text-sm;
+  @apply text-sm text-green-500;
 }
 
 main {
-  @apply flex flex-col items-center justify-center w-full flex-1 px-20 text-center;
+  @apply flex flex-col items-center justify-center w-full flex-1 px-4 text-center;
 }
 
 textarea {
-  @apply w-full h-64 bg-black text-green-400 border border-green-400 p-2 rounded;
+  @apply w-full h-32 sm:h-48 bg-gray-900 text-green-300 border border-green-500 p-3 rounded-lg resize-none shadow-lg;
 }
 
 button {
-  @apply mt-4 px-4 py-2 bg-green-400 text-black rounded;
+  @apply mt-4 px-6 py-3 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-transform transform hover:scale-105;
 }
 
 .border-green {
-  @apply border border-green-400 p-5 rounded;
+  @apply border border-green-500 p-5 rounded-lg bg-gray-900 shadow-xl;
 }
 
 .grid-layout {
-  @apply mt-10 grid grid-cols-2 gap-10 w-full max-w-4xl;
+  @apply mt-10 grid grid-cols-1 gap-10 w-full max-w-4xl;
 }
 
-/* Custom styles for decryption effect */
-.logo-text {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  vertical-align: top;
-  white-space: nowrap;
+@media (min-width: 768px) {
+  .grid-layout {
+    @apply grid-cols-2;
+  }
+}
+
+.select {
+  @apply bg-gray-900 text-green-300 border border-green-500 p-3 rounded-lg w-full;
 }

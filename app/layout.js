@@ -1,3 +1,5 @@
+// app/layout.js
+
 import './globals.css';
 import Head from 'next/head';
 
@@ -13,13 +15,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <header>
-          <h1 className="text-4xl font-bold logo-text">LinGo</h1>
-        </header>
-        <main>{children}</main>
-        <footer>
-          <p>© 2024 LinGo</p>
-        </footer>
+        {children}
       </body>
     </html>
   );
