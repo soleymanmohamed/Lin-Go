@@ -39,3 +39,12 @@ button {
 .grid-layout {
   @apply mt-10 grid grid-cols-2 gap-10 w-full max-w-4xl;
 }
+
+/* Custom styles for decryption effect */
+.logo-text {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  white-space: nowrap;
+}
