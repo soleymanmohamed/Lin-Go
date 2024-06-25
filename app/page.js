@@ -3,7 +3,7 @@
 import DecryptionEffect from '../components/DecryptionEffect';
 import ClientLayout from '../components/ClientLayout';
 import { useState } from 'react';
-import axios from 'axios';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const [englishText, setEnglishText] = useState('');
@@ -12,8 +12,13 @@ export default function Home() {
 
   const handleTranslate = async () => {
     try {
-      const response = await axios.post('/api/translate', { text: englishText, targetLang });
-      setTranslatedText(response.data.translatedText);
+      const response = await fetch('/api/translate', {
+        method: 'POST',
+        body: JSON.stringify({ text: englishText, targetLang }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await response.json();
+      setTranslatedText(data.translatedText);
     } catch (error) {
       console.error('Error translating text:', error);
     }
@@ -23,7 +28,12 @@ export default function Home() {
     <ClientLayout>
       <DecryptionEffect />
       <div className="grid-layout">
-        <div className="border-green">
+        <motion.div
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 50 }}
+          className="border-green"
+        >
           <h2 className="text-2xl mb-4">English</h2>
           <textarea
             placeholder="Enter text in English..."
@@ -51,9 +61,21 @@ export default function Home() {
               <option value="ar">Arabic</option>
             </select>
           </div>
-          <button onClick={handleTranslate} className="button">Translate</button>
-        </div>
-        <div className="border-green">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleTranslate}
+            className="button"
+          >
+            Translate
+          </motion.button>
+        </motion.div>
+        <motion.div
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 50 }}
+          className="border-green"
+        >
           <h2 className="text-2xl mb-4">Translation</h2>
           <textarea
             placeholder="Translation will appear here..."
@@ -61,7 +83,7 @@ export default function Home() {
             readOnly
             className="textarea"
           ></textarea>
-        </div>
+        </motion.div>
       </div>
     </ClientLayout>
   );
